@@ -7,7 +7,7 @@
     </form>
     <% @uploads.each do |upload| %>
     	<img src="<%= upload.file.url %>" />
-		<%= ap upload.file.summary %>
+		<%= ap upload.file.patient_name %>
 		
     <% end %>
 	<%= @summary %>

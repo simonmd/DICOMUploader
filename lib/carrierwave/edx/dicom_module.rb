@@ -6,13 +6,13 @@ module Edx
 
             module ClassMethods
                 def summary
-                  process :summary
+                  process :extract_dicomdata
                 end
             end
 
-            def summary
-              obj = DObject.new(path)
-              return obj.summary
+            def extract_dicomdata
+              dcmobj = DObject.new(path)
+              return dcmobj
             end
         end
     end
