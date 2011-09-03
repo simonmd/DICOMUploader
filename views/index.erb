@@ -5,8 +5,11 @@
       <p><input type="file" name="image" /></p>
       <p><input type="submit" name="submit" value="Upload" /></p>
     </form>
-    <% @uploads.each do|upload| %>
-      <img src = "<%= upload.file.url%>" />
+    <% @uploads.each do |upload| %>
+    	<img src="<%= upload.file.url %>" />
+		<%= ap upload.file.summary %>
+		
     <% end %>
+	<%= @summary %>
   </body>
 </html>
