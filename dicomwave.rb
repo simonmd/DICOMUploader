@@ -17,7 +17,6 @@ DB = Sequel.sqlite
 
 DB.create_table :uploads do
   String :file
-  String :patient_name
 end
 
 # uploader
@@ -25,11 +24,11 @@ end
 class MyUploader < CarrierWave::Uploader::Base
   include Edx::CarrierWave::Dicom
   storage :file
-  dcmobj = process :extract_dicomdata
+  process :dicomdata
 
   # Limit possible extensions
   def extension_white_list
-    %w(jpg jpeg gif png dcm)
+    %w(dcm)
   end
 
   # Set the storage directory
@@ -42,8 +41,8 @@ end
 
 class Upload < Sequel::Model
   mount_uploader :file, MyUploader
-  def patient_name
-    self.patient_name = Upload.dcmobj.patient_name
+  def metadata
+    self.dcmobj = Upload.dcmobj
   end
 end
 
