@@ -35,6 +35,10 @@ class MyUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads"
   end
+  
+  version :thumb do
+    process :dcm2jpg
+  end
 end
 
 # model

@@ -5,11 +5,19 @@
       <p><input type="file" name="image" /></p>
       <p><input type="submit" name="submit" value="Upload" /></p>
     </form>
+<table>
     <% @uploads.each do |upload| %>
-    	<img src="<%= upload.file.url %>" />
-		<%= ap upload.file.dicomdata.patients_name.value %>
-		
+		<tr>
+			<!--Ugly hack para ponerle el .jpg al final porque carrierwave no deja -->
+			<td><img src="<%= upload.file.thumb.url + ".jpg"%>" /></td>
+			<td>
+				<p><b>NAME: </b><%= upload.file.dicomdata.patients_name.value %></p>
+				<p><b>SEX: </b><%= upload.file.dicomdata.value("0010,0040")%></p>				
+				<p><b>ID: </b><%= upload.file.dicomdata.patient_id.value %></p>
+				<p><b>DESCRIPTION: </b><%= upload.file.dicomdata.value("0008,1030")%></p>				
+			</td>
+		</tr>
     <% end %>
-	<%= @summary %>
+</table>
   </body>
 </html>
