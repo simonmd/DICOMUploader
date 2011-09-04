@@ -14,7 +14,8 @@
 				<p><b>NAME: </b><%= upload.file.dicomdata.patients_name.value %></p>
 				<p><b>SEX: </b><%= upload.file.dicomdata.value("0010,0040")%></p>				
 				<p><b>ID: </b><%= upload.file.dicomdata.patient_id.value %></p>
-				<p><b>DESCRIPTION: </b><%= upload.file.dicomdata.value("0008,1030")%></p>				
+				<p><b>DESCRIPTION: </b><%= upload.file.dicomdata.value("0008,1030")%></p>	
+				<p><b>SERIES: </b><%= upload.file.dicomdata.value("0008,103E")%></p>							
 			</td>
 		</tr>
     <% end %>

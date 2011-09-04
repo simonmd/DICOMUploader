@@ -39,6 +39,7 @@ class MyUploader < CarrierWave::Uploader::Base
   version :thumb do
     process :dcm2jpg
   end
+
 end
 
 # model
